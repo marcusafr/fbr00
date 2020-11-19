@@ -1,0 +1,49 @@
+<h5 class="card-title">Inserir Item</h5>
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Item"
+    aria-label="Item"
+    aria-describedby="button-addon2"
+    [(ngModel)]="item"
+  />
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      id="button-addon1"
+      (click)="initem()"
+    >
+      Insert
+    </button>
+  </div>
+</div>
+
+<hr />
+<h5>Llista Items</h5>
+<ul class="list-group">
+  <li
+    class="list-group-item d-flex justify-content-between align-items-center"
+    *ngFor="let i of items"
+  >
+    {{ i.payload.doc.data().nom }}
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button
+        class="btn btn-outline-success"
+        (click)="detail(i.payload.doc.data().nom)"
+      >
+        Detail 1
+      </button>
+      <button class="btn btn-outline-info" (click)="detail1(i.payload.doc.id)">
+        Detail 2
+      </button>
+      <button
+        class="btn btn-outline-danger"
+        (click)="delitem(i.payload.doc.id)"
+      >
+        Delete
+      </button>
+    </div>
+  </li>
+</ul>
